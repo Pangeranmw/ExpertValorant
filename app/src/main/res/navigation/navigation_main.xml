@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_main"
+    app:startDestination="@id/nav_home">
+    <fragment
+        android:id="@id/nav_home"
+        android:name="com.pangeranmw.expertvalorant.home.HomeFragment"
+        android:label="Home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_mainFragment_to_detailFragment"
+            app:destination="@id/nav_detail">
+            <argument
+                android:name="agent"
+                app:argType="com.pangeranmw.core.domain.model.Agent" />
+        </action>
+        <action
+            android:id="@+id/action_nav_home_to_featureFavorite"
+            app:destination="@id/navigation_favorite_graph" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_detail"
+        android:name="com.pangeranmw.expertvalorant.detail.DetailFragment"
+        android:label="Detail"
+        tools:layout="@layout/fragment_detail" >
+        <action
+            android:id="@+id/action_nav_detail_to_featureFavorite"
+            app:destination="@id/navigation_favorite_graph" />
+        <action
+            android:id="@+id/action_detailFragment_to_mainFragment"
+            app:destination="@id/nav_home" />
+        <action
+            android:id="@+id/action_detailFragment_self"
+            app:destination="@id/nav_detail" />
+        <argument
+            android:name="agent"
+            app:argType="com.pangeranmw.core.domain.model.Agent" />
+    </fragment>
+    <include-dynamic
+        android:id="@+id/navigation_favorite_graph"
+        app:moduleName="favorite"
+        app:graphResName="navigation_favorite_graph"
+        app:graphPackage="${applicationId}.favorite" />
+</navigation>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="CornerCutTopLeftBottomRight">
+        <item name="cornerSizeTopLeft">20dp</item>
+        <item name="cornerSizeBottomRight">20dp</item>
+        <item name="cornerFamily">cut</item>
+    </style>
+
+    <style name="CornerCutTopRight">
+        <item name="cornerSizeTopRight">15dp</item>
+        <item name="cornerFamily">cut</item>
+    </style>
+
+    <style name="CornerCutTopLeftBottomLeft">
+        <item name="cornerSizeTopLeft">15dp</item>
+        <item name="cornerSizeBottomLeft">15dp</item>
+        <item name="cornerFamily">cut</item>
+    </style>
+
+</resources>

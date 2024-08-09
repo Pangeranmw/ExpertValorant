@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@id/navigation_favorite_graph"
+    app:startDestination="@id/nav_favorites">
+
+    <fragment
+        android:id="@+id/nav_favorites"
+        android:name="com.pangeranmw.expertvalorant.favorite.FavoriteFragment"
+        android:label="Favorite"
+        tools:layout="@layout/fragment_favorite" >
+        <action
+            android:id="@+id/action_nav_favorites_to_nav_detail"
+            app:destination="@id/nav_detail">
+            <argument android:name="agent"
+                app:argType="com.pangeranmw.core.domain.model.Agent" />
+        </action>
+        <action
+            android:id="@+id/action_nav_favorites_to_nav_home"
+            app:destination="@id/nav_home"/>
+    </fragment>
+    <fragment
+        android:id="@id/nav_detail"
+        android:name="com.pangeranmw.expertvalorant.detail.DetailFragment"
+        android:label="Detail">
+        <argument
+            android:name="agent"
+            app:argType="com.pangeranmw.core.domain.model.Agent" />
+        <action
+            android:id="@+id/action_nav_detail_to_nav_favorites"
+            app:destination="@id/nav_favorites" />
+        <action
+            android:id="@+id/action_detailFragment_self"
+            app:destination="@id/nav_detail" />
+    </fragment>
+    <fragment
+        android:id="@id/nav_home"
+        android:name="com.pangeranmw.expertvalorant.home.HomeFragment"
+        android:label="Home"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_nav_home_to_nav_favorites"
+            app:destination="@id/nav_favorites" />
+    </fragment>
+</navigation>

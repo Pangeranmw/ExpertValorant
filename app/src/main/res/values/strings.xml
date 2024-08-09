@@ -1,0 +1,13 @@
+<resources>
+    <string name="title_favorite">favorite</string>
+    <string name="app_name">ExpertValorant</string>
+    <string name="search">Search</string>
+    <string name="agents">Agents</string>
+    <string name="error">Error</string>
+    <string name="empty">Agent or Role Not Found</string>
+    <string name="home">Home</string>
+    <string name="favorites">Favorites</string>
+    <string name="imageview">ImageView</string>
+    <string name="image_button">Image Button</string>
+    <string name="similar_role">Similar Role</string>
+</resources>

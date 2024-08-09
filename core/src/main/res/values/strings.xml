@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">ExpertValorant</string>
+    <string name="phoenix">Phoenix</string>
+    <string name="initiator">Initiator</string>
+    <string name="c">C</string>
+    <string name="imageview">image view</string>
+</resources>

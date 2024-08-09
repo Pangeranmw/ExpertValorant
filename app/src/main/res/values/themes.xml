@@ -1,0 +1,15 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.ExpertValorant" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+         <item name="colorPrimary">@color/orange</item> 
+    </style>
+
+    <style name="MonumentExtendedWhiteTextViewStyle" parent="android:Widget.TextView">
+        <item name="android:fontFamily">@font/monumentextended_regular</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">28sp</item>
+    </style>
+    <style name="Theme.ExpertValorant" parent="Base.Theme.ExpertValorant" />
+</resources>
