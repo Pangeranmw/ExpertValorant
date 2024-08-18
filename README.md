@@ -1,1 +1,1 @@
-[![pangeranmw](https://circleci.com/gh/pangeranmw/ExpertValorant.svg?style=svg)](https://circleci.com/gh/pangeranmw/ExpertValorant)
+[![Pangeranmw](https://circleci.com/gh/Pangeranmw/ExpertValorant.svg?style=svg)](https://circleci.com/gh/Pangeranmw/ExpertValorant)
