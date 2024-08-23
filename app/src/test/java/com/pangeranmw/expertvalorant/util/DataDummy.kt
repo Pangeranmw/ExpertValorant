@@ -10,7 +10,7 @@ object DataDummy {
         val agents = ArrayList<Agent>()
         val roleArray = listOf("Initiator", "Initiator", "Initiator", "Sentinel", "Duelist", "Sentinel", "Initiator", "Initiator", "Sentinel", "Initiator", "Sentinel", "Controller", "Controller", "Duelist", "Controller", "Controller", "Duelist", "Controller", "Duelist", "Duelist", "Sentinel", "Duelist", "Controller", "Duelist")
         val nameArray = listOf("Gekko", "Fade", "Breach", "Deadlock", "Raze", "Chamber", "KAY/O", "Skye", "Cypher", "Sova", "Killjoy", "Harbor", "Viper", "Phoenix", "Astra", "Brimstone", "Iso", "Clove", "Neon", "Yoru", "Sage", "Reyna", "Omen", "Jett")
-        for (i in 0..nameArray.size){
+        for (i in nameArray.indices){
             val agent = Agent(
                 agentId = "Id $i",
                 name = nameArray[i],

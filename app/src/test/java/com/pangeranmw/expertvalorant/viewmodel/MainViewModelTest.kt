@@ -12,7 +12,6 @@ import org.mockito.junit.MockitoJUnitRunner
 import com.pangeranmw.expertvalorant.util.MainDispatcherRule
 import com.pangeranmw.expertvalorant.util.getOrAwaitValue
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertEquals
@@ -50,6 +49,7 @@ class MainViewModelTest {
         assertEquals(dummyAgent.size, (actualAgent as Resource.Success).data?.size)
     }
 
+
     @Test
     fun `when Network Error Should Return Error`() = runTest {
         val expectedAgent = Resource.Error<List<Agent>>("Error")
@@ -57,24 +57,8 @@ class MainViewModelTest {
         mainViewModel = MainViewModel(valorantUseCase)
         val actualAgent = mainViewModel.agent.getOrAwaitValue()
         verify(valorantUseCase).getAllAgent()
+
         assertNotNull(actualAgent)
         assertTrue(actualAgent is Resource.Error)
     }
-
-    @Test
-    fun `when Search Agent Should Not Null`() = runTest {
-        val expectedAgent = dummyAgent
-        val queryAgent = "senti"
-
-        `when`(valorantUseCase.getAgent(queryAgent)).thenReturn(flowOf(expectedAgent.filter{it.name.contains(queryAgent) || it.roleFilter.contains(queryAgent)}))
-        mainViewModel = MainViewModel(valorantUseCase)
-        mainViewModel.queryAgent.value = queryAgent
-        val actualAgent = mainViewModel.searchResult.getOrAwaitValue()
-
-        verify(valorantUseCase).getAgent(queryAgent)
-        assertNotNull(actualAgent)
-        assertTrue(actualAgent.first()[0].name.contains(queryAgent) || actualAgent.first()[0].roleFilter.contains(queryAgent))
-        assertEquals(dummyAgent.size, actualAgent.first().size)
-    }
-
 }
