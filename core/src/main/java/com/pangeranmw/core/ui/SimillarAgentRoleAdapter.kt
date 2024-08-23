@@ -1,8 +1,5 @@
 package com.pangeranmw.core.ui
 
-import android.graphics.Color
-import android.graphics.drawable.GradientDrawable
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -46,13 +43,10 @@ class SimillarAgentRoleAdapter(var onItemClick:(Agent) -> Unit): ListAdapter<Age
         val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Agent>() {
 
             override fun areItemsTheSame(oldItem: Agent, newItem: Agent): Boolean {
-                Log.d("AgentAdapter", "areItemsTheSame: ${oldItem.agentId == newItem.agentId}")
-
                 return oldItem.agentId == newItem.agentId
             }
 
             override fun areContentsTheSame(oldItem: Agent, newItem: Agent): Boolean {
-                Log.d("AgentAdapter", "areContentsTheSame: ${oldItem == newItem}")
                 return oldItem == newItem
             }
         }

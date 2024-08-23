@@ -2,6 +2,7 @@ package com.pangeranmw.expertvalorant.home
 
 import android.graphics.Rect
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -26,20 +27,25 @@ import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
-    private lateinit var binding: FragmentHomeBinding
+    private var _binding: FragmentHomeBinding? = null
+    private val binding get() = _binding!!
     private val mainViewModel: MainViewModel by activityViewModels()
-    private val agentAdapter by lazy {
-        AgentAdapter { agent ->
-            val action = HomeFragmentDirections.actionMainFragmentToDetailFragment(agent)
-            findNavController().navigate(action)
-        }
+    private val agentAdapter = AgentAdapter { agent ->
+        val action = HomeFragmentDirections.actionMainFragmentToDetailFragment(agent)
+        findNavController().navigate(action)
     }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentHomeBinding.inflate(inflater, container, false)
+        _binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
+    }
+
+    override fun onDestroyView() {
+        binding.rvAgent.adapter = null
+        super.onDestroyView()
+        _binding = null
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -50,9 +56,11 @@ class HomeFragment : Fragment() {
         binding.rvAgent.apply {
             layoutManager = LinearLayoutManager(requireActivity(),
                 LinearLayoutManager.HORIZONTAL, false)
+
             adapter = agentAdapter
         }
         mainViewModel.agent.observe(viewLifecycleOwner) { agent ->
+            Log.d("TAG", "initSearch: $agent")
             if (agent != null) {
                 binding.progressBar.isVisible = agent is Resource.Loading
                 initError(agent is Resource.Error, agent.message ?: getString(R.string.error))
@@ -104,12 +112,14 @@ class HomeFragment : Fragment() {
             private var initialHeight = binding.svAgent.height
             override fun onGlobalLayout() {
                 val r = Rect()
-                binding.svAgent.getWindowVisibleDisplayFrame(r)
-                val screenHeight = binding.svAgent.height
-                if (initialHeight == screenHeight) {
-                    clearFocusFromEditText()
+                if(_binding!=null){
+                    binding.svAgent.getWindowVisibleDisplayFrame(r)
+                    val screenHeight = binding.svAgent.height
+                    if (initialHeight == screenHeight) {
+                        clearFocusFromEditText()
+                    }
+                    if(initialHeight == 0) initialHeight = screenHeight
                 }
-                if(initialHeight == 0) initialHeight = screenHeight
             }
         })
     }

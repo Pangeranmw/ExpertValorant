@@ -6,4 +6,5 @@ plugins {
     alias(libs.plugins.gradle.hilt) apply false
     alias(libs.plugins.android.dynamic.feature) apply false
     alias(libs.plugins.androidx.safeargs) apply false
+    alias(libs.plugins.ksp) apply false
 }

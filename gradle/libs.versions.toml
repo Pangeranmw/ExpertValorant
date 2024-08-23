@@ -1,9 +1,12 @@
 [versions]
-agp = "8.5.1"
+agp = "8.5.2"
+androidDatabaseSqlcipher = "4.4.0"
+coreTesting = "2.2.0"
 drawerlayout = "1.2.0"
 fragmentKtx = "1.8.2"
-kotlin = "1.9.0"
-kotlinStdlib = "1.9.22"
+kotlin = "1.9.25"
+kotlinStdlib = "1.9.25"
+kotlinxCoroutinesTest = "1.7.3"
 coreKtx = "1.13.1"
 junit = "4.13.2"
 junitVersion = "1.2.1"
@@ -11,14 +14,15 @@ espressoCore = "3.6.1"
 appcompat = "1.7.0"
 kotlinxCoroutinesAndroid = "1.7.3"
 kotlinxCoroutinesCore = "1.6.1"
+leakcanaryAndroid = "2.10"
 lifecycleLivedataKtx = "2.8.4"
 loggingInterceptor = "4.11.0"
 material = "1.12.0"
 activity = "1.9.1"
 constraintlayout = "2.1.4"
 hilt = "2.48"
-legacy-support = "1.0.0"
-multidex = "2.0.1"
+mockitoCore = "3.12.4"
+mockitoInline = "3.12.4"
 navigationFragmentKtx = "2.7.7"
 recyclerview= "1.3.2"
 glide= "4.16.0"
@@ -27,8 +31,12 @@ roomKtx = "2.6.1"
 rxandroid = "2.1.1"
 rxbinding = "2.0.0"
 rxjava = "2.2.19"
+ksp = "1.9.25-1.0.20"
+sqliteKtx = "2.4.0"
 
 [libraries]
+adapter-rxjava2 = { module = "com.squareup.retrofit2:adapter-rxjava2", version.ref = "retrofit" }
+android-database-sqlcipher = { module = "net.zetetic:android-database-sqlcipher", version.ref = "androidDatabaseSqlcipher" }
 androidx-activity-ktx = { module = "androidx.activity:activity-ktx", version.ref = "activity" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-drawerlayout = { module = "androidx.drawerlayout:drawerlayout", version.ref = "drawerlayout" }
@@ -41,7 +49,9 @@ androidx-navigation-ui-ktx = { module = "androidx.navigation:navigation-ui-ktx",
 androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "roomKtx" }
 androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "roomKtx" }
 androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomKtx" }
+androidx-room-rxjava2 = { module = "androidx.room:room-rxjava2", version.ref = "roomKtx" }
 androidx-room-testing = { module = "androidx.room:room-testing", version.ref = "roomKtx" }
+androidx-sqlite-ktx = { module = "androidx.sqlite:sqlite-ktx", version.ref = "sqliteKtx" }
 converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
@@ -50,6 +60,7 @@ androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version
 kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlinStdlib" }
 kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinxCoroutinesAndroid" }
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinxCoroutinesCore" }
+leakcanary-android = { module = "com.squareup.leakcanary:leakcanary-android", version.ref = "leakcanaryAndroid" }
 logging-interceptor = { module = "com.squareup.okhttp3:logging-interceptor", version.ref = "loggingInterceptor" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
@@ -58,10 +69,14 @@ dagger-hilt-android = { group = "com.google.dagger", name = "hilt-android", vers
 dagger-hilt-android-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt" }
 androidx-recyclerview = { group = "androidx.recyclerview", name = "recyclerview", version.ref = "recyclerview" }
 glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glide" }
+mockito-inline = { module = "org.mockito:mockito-inline", version.ref = "mockitoInline" }
+mockito-core = { module = "org.mockito:mockito-core", version.ref = "mockitoCore" }
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
 rxandroid = { module = "io.reactivex.rxjava2:rxandroid", version.ref = "rxandroid" }
 rxbinding = { module = "com.jakewharton.rxbinding2:rxbinding", version.ref = "rxbinding" }
 rxjava = { module = "io.reactivex.rxjava2:rxjava", version.ref = "rxjava" }
+androidx-core-testing = { module = "androidx.arch.core:core-testing", version.ref = "coreTesting" }
+kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinxCoroutinesTest" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
@@ -70,3 +85,4 @@ android-library = { id = "com.android.library", version.ref = "agp" }
 gradle-hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 android-dynamic-feature = { id = "com.android.dynamic-feature", version.ref = "agp" }
 androidx-safeargs = { id = "androidx.navigation.safeargs.kotlin", version.ref = "navigationFragmentKtx" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }

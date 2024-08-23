@@ -10,10 +10,8 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.pangeranmw.core.ui.AgentAdapter
-import com.pangeranmw.expertvalorant.R
 import com.pangeranmw.expertvalorant.di.FavoriteModuleDepedencies
 import com.pangeranmw.expertvalorant.favorite.databinding.FragmentFavoriteBinding
-import com.pangeranmw.expertvalorant.home.MainActivity
 import dagger.hilt.android.EntryPointAccessors
 import javax.inject.Inject
 
@@ -25,14 +23,19 @@ class FavoriteFragment : Fragment() {
         factory
     }
 
-    private lateinit var binding: FragmentFavoriteBinding
+    private var _binding: FragmentFavoriteBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentFavoriteBinding.inflate(inflater, container, false)
+        _binding = FragmentFavoriteBinding.inflate(inflater, container, false)
         return binding.root
+    }
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -50,15 +53,6 @@ class FavoriteFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val mainActivity = requireActivity() as MainActivity
-        mainActivity.setNavViewListener(onNavigate={navCon,itemId->
-            if(itemId == R.id.nav_home){
-                navCon.navigate(com.pangeranmw.expertvalorant.favorite.R.id.action_nav_favorites_to_nav_home)
-            }
-        }, onChecked = {navView->
-            navView.setCheckedItem(com.pangeranmw.expertvalorant.favorite.R.id.nav_favorites)
-            navView.setCheckedItem(R.id.navigation_favorite_graph)
-        })
 
         val agentAdapter = AgentAdapter{agent->
             val action = FavoriteFragmentDirections.actionNavFavoritesToNavDetail(agent)

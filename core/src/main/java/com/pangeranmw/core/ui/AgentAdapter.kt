@@ -83,7 +83,6 @@ class AgentAdapter(var onItemClick:(Agent) -> Unit): ListAdapter<Agent, AgentAda
 
             override fun areItemsTheSame(oldItem: Agent, newItem: Agent): Boolean {
                 Log.d("AgentAdapter", "areItemsTheSame: ${oldItem.agentId == newItem.agentId}")
-
                 return oldItem.agentId == newItem.agentId
             }
 

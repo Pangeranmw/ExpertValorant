@@ -1,12 +1,13 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
-    id ("kotlin-kapt")
+    id("com.google.devtools.ksp")
     id ("kotlin-parcelize")
 }
 apply( "../shared_dependencies.gradle")
 
 android {
+
     namespace = "com.pangeranmw.core"
     compileSdk = 34
 
@@ -19,7 +20,15 @@ android {
 
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
+
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
+        }
+        debug {
+            isMinifyEnabled = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -34,9 +43,6 @@ android {
         viewBinding = true
         buildConfig = true
     }
-    kapt {
-        correctErrorTypes = true
-    }
     kotlinOptions {
         jvmTarget = "17"
     }
@@ -47,7 +53,7 @@ dependencies {
 
     //room
     api (libs.androidx.room.runtime)
-    kapt (libs.androidx.room.compiler)
+    ksp(libs.androidx.room.compiler)
     androidTestImplementation (libs.androidx.room.testing)
 
     //retrofit)
@@ -67,6 +73,13 @@ dependencies {
     //rxjava
     api (libs.rxjava)
     api (libs.rxandroid)
-    api (libs.rxbinding)
     api (libs.androidx.lifecycle.reactivestreams.ktx)
+    api (libs.adapter.rxjava2)
+    api (libs.androidx.room.rxjava2)
+    api (libs.rxbinding)
+
+    // encrypt db
+    implementation (libs.android.database.sqlcipher)
+    implementation (libs.androidx.sqlite.ktx)
+
 }

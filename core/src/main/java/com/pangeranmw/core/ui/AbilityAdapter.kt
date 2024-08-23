@@ -1,7 +1,5 @@
 package com.pangeranmw.core.ui
 
-import android.graphics.Color
-import android.graphics.drawable.GradientDrawable
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
